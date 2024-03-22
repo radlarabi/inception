@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  nginx:
+    build: ./requirements/nginx/
+    image: nginx
+    container_name: mynginx
+    ports:
+      - 433:433
+    env_file:
+      - .env
+
+  mariadb:
+    build: ./requirements/mariadb/
+    image: mariadb
+    container_name: mymariadb
+    ports:
+      - 3306
+    env_file:
+      - .env
+      
