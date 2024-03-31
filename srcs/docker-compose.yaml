@@ -9,6 +9,11 @@ services:
       - 433:433
     env_file:
       - .env
+    volumes:
+      - wordpress_data:/var/www/wordpress
+    networks:
+      - my_network_1
+
 
   mariadb:
     build: ./requirements/mariadb/
@@ -18,4 +23,28 @@ services:
       - 3306
     env_file:
       - .env
-      
+    networks:
+      - my_network_1
+
+  wordpress:
+    build: ./requirements/wordpress/
+    image: wordpress
+    container_name: mywordpress
+    ports:
+      - 9000:9000
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
+      - nginx
+    volumes:
+      - wordpress_data:/var/www/wordpress
+    networks:
+      - my_network_1
+
+volumes:
+  wordpress_data:
+
+networks:
+  my_network_1:
+    driver: bridge
