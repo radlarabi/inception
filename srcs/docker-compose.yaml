@@ -11,6 +11,8 @@ services:
       - .env
     networks:
       - my_network_1
+    volumes:
+      - mariadb_data:/var/lib/mysql    
 
   wordpress:
     build: ./requirements/wordpress/
@@ -42,8 +44,21 @@ services:
     depends_on:
       - wordpress
 
+#   wordpress_data:
 volumes:
   wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/rlarabi/data/wordpress # for linux vm
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/rlarabi/data/mariadb # for linux vm
+
 
 networks:
   my_network_1:

@@ -3,10 +3,10 @@
  * WordPress Database Configuration
  */
 
-define('DB_NAME', 'wordpress');
-define('DB_USER', 'rlarabi');
-define('DB_PASSWORD', '1234');
-define('DB_HOST', 'mymariadb');
+define('DB_NAME', $_ENV['SQL_DATABASE']);
+define('DB_USER', $_ENV['SQL_USERNAME']);
+define('DB_PASSWORD', $_ENV['SQL_PASSWORD']);
+define('DB_HOST', $_ENV['SQL_HOST']);
 define('DB_CHARSET', 'utf8mb4');
 define('DB_COLLATE', '');
 
