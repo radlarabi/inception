@@ -1,20 +1,6 @@
 version: '3'
 
 services:
-  nginx:
-    build: ./requirements/nginx/
-    image: nginx
-    container_name: mynginx
-    ports:
-      - 433:433
-    env_file:
-      - .env
-    volumes:
-      - wordpress_data:/var/www/wordpress
-    networks:
-      - my_network_1
-
-
   mariadb:
     build: ./requirements/mariadb/
     image: mariadb
@@ -31,16 +17,30 @@ services:
     image: wordpress
     container_name: mywordpress
     ports:
-      - 9000:9000
+      - 9000
     env_file:
       - .env
     depends_on:
       - mariadb
-      - nginx
     volumes:
       - wordpress_data:/var/www/wordpress
     networks:
       - my_network_1
+  
+  nginx:
+    build: ./requirements/nginx/
+    image: nginx
+    container_name: mynginx
+    ports:
+      - 433:433
+    env_file:
+      - .env
+    volumes:
+      - wordpress_data:/var/www/wordpress
+    networks:
+      - my_network_1
+    depends_on:
+      - wordpress
 
 volumes:
   wordpress_data:

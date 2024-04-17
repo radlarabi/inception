@@ -6,7 +6,7 @@
 define('DB_NAME', 'wordpress');
 define('DB_USER', 'rlarabi');
 define('DB_PASSWORD', '1234');
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'mymariadb');
 define('DB_CHARSET', 'utf8mb4');
 define('DB_COLLATE', '');
 

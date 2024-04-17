@@ -14,7 +14,7 @@ RUN chown -R root:root /var/www/wordpress
 
 COPY ./tools/wp-config.php /var/www/wordpress/wp-config.php
 
-RUN sed -i 's/;listen = .*/listen = 127.0.0.1:9000/' /etc/php/7.4/fpm/pool.d/www.conf
+RUN echo "listen = 9000" >> /etc/php/7.4/fpm/pool.d/www.conf
 
 RUN service php7.4-fpm start 
 

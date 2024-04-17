@@ -8,8 +8,9 @@ COPY ./tools/start_db.sh .
 
 RUN chmod +x start_db.sh
 
-RUN ./start_db.sh
+# RUN ./start_db.sh
 
 EXPOSE 3306
 
-CMD [ "mysqld" ]
+CMD ["bash", "./start_db.sh" ]
+# CMD [ "mysqld" ]
