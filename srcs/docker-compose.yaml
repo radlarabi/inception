@@ -34,7 +34,7 @@ services:
     image: nginx
     container_name: mynginx
     ports:
-      - 433:433
+      - 443:443
     env_file:
       - .env
     volumes:
@@ -44,20 +44,19 @@ services:
     depends_on:
       - wordpress
 
-#   wordpress_data:
 volumes:
   wordpress_data:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/rlarabi/data/wordpress # for linux vm
+      device: /home/rlarabi/data/wordpress
   mariadb_data:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/rlarabi/data/mariadb # for linux vm
+      device: /home/rlarabi/data/mariadb
 
 
 networks:
