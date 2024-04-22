@@ -8,6 +8,4 @@ RUN mkdir /etc/nginx/ssl && openssl req -x509 -nodes -keyout /etc/nginx/ssl/ince
 
 EXPOSE 443
 
-VOLUME /var/html/wordpress
-
 CMD [ "nginx", "-g", "daemon off;" ]
